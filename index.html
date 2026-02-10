@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #playButton {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- El audio está oculto y no se reproduce automáticamente al principio -->
+    <audio id="myAudio" loop>
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Un botón simple para iniciar la reproducción -->
+    <button id="playButton">mira mi video pls</button>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const button = document.getElementById('playButton');
+
+        button.addEventListener('click', function() {
+            // Intenta reproducir el audio
+            audio.play().then(() => {
+                // Si se reproduce, oculta el botón
+                button.style.display = 'none';
+            }).catch(error => {
+                console.error("Error al reproducir el audio:", error);
+                alert("No se pudo reproducir el audio. Asegúrate de que el archivo 'audio.mp3' está en la misma carpeta.");
+            });
+        });
+    </script>
+</body>
+</html>
